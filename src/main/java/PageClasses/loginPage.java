@@ -1,3 +1,5 @@
+package PageClasses;
+
 import ObjectRepository.loginPageLocators;
 import org.openqa.selenium.By;
 import utility.CommonFunctions;
@@ -27,8 +29,8 @@ public class loginPage {
     }
 
     public void verifyLoginAsAdmin() {
-        String actualText = cf.getText(By.xpath(lpl.loginAsAdminButton));
-        cf.assertion(actualText, expectedTextForLoginAsAdminButton);
+       // String actualText = cf.getText(By.xpath(lpl.loginAsAdminButton));
+        cf.assertion(cf.getText(By.xpath(lpl.loginAsAdminButton)), expectedTextForLoginAsAdminButton);
         System.out.println("Login as admin button is verified and present there on login page");
     }
 
