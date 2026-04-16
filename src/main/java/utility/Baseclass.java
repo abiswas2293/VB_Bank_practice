@@ -11,6 +11,7 @@ public class Baseclass {
         driver=new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
         driver.manage().window().maximize();
+        driver.get("https://vb-bank-demo.vercel.app/login");
     }
 
     public void closeBrowser(){

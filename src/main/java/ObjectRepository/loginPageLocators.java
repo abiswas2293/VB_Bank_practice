@@ -1,10 +1,14 @@
 package ObjectRepository;
 
 public class loginPageLocators {
-    String pageTitle=" ";
-    String registerHereButton="";
-    String loginButton="";
-    String loginPageUserButton="";
-    String loginAsAdminButton="";
+  public  String pageTitle=" ";
+  public String usernameText="";
+    public String usernameTextBox="";
+    public String passwordText="";
+    public String passwordTextBox="";
+    public  String registerHereButton="";
+    public  String loginButton="";
+    public  String loginPageUserButton="";
+    public   String loginAsAdminButton="";
 
 }
