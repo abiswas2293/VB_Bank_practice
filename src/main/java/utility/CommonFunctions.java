@@ -39,6 +39,9 @@ public class CommonFunctions extends Baseclass{
     public void assertion(String actualText,String expectedText){
         Assert.assertEquals(actualText,expectedText);
     }
+    public boolean isPresent(By by){
+        return driver.findElement(by).isEnabled();
+    }
 
 
 }
