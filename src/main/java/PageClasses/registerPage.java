@@ -11,6 +11,8 @@ public class registerPage {
     String expectedFullNameText = "";
     String expectedUsernameText = "";
     String expectedEmailText = "";
+    String expectedPasswordText="";
+
 
 
     public void verifyRegisterPageTitle() {
@@ -41,10 +43,35 @@ public class registerPage {
         cf.assertion(cf.getText(By.xpath(rpl.emailText)), expectedEmailText);
     }
 
-    public void verifyEmailTextBoxIsPresentAndFillOut(String emailAddress) {
+    public void enterEmailAddress(String emailAddress) {
         if (cf.isPresent(By.xpath(rpl.emailTextBox))) {
             cf.typeText(By.xpath(rpl.emailTextBox), emailAddress);
         }
+    }
+    public void verifyPasswordText() {
+        cf.assertion(cf.getText(By.xpath(rpl.passwordText)), expectedPasswordText);
+    }
+
+    String password;
+
+    public void enterPassword(String password) {
+        this.password= password;
+        if (cf.isPresent(By.xpath(rpl.passwordTextBox))) {
+            cf.typeText(By.xpath(rpl.passwordTextBox), password);
+        }
+    }
+
+
+
+    public void fillSameConfirmedPass(){
+        cf.typeText(By.xpath(rpl.confirmPasswordTextBox),this.password);
+    }
+
+    public void enterConfirmedPassword(String confirmedPassword){
+        cf.typeText(By.xpath(rpl.confirmPasswordTextBox),confirmedPassword);
+    }
+    public void clickCreateAccount(){
+        cf.click(By.xpath(rpl.createAccountButton));
     }
 
 
