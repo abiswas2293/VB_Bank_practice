@@ -7,13 +7,18 @@ import utility.CommonFunctions;
 public class homePage {
     CommonFunctions cf = new CommonFunctions();
     homePageLocators hpl = new homePageLocators();
-    String[] headers = {"Bill payments", "Cards", "Loans", "Top Up", "Settings", "Log out"};
+    String[] allSidePanelNames = {"Bill payments", "Cards", "Loans", "Top Up", "Settings", "Log out"};
     String expectedAccountNumber = "";
     String expectedTopUpPageUrl = "https://vb-bank-demo.vercel.app/top-up";
 
-    public void verifyAllHeadersArePresent() {
-        for (int i = 0; i < headers.length; i++) {
-            cf.isPresent(By.xpath(hpl.headersNames(headers[i])));
+    public void verifyAllSidePanelsArePresent() {
+        for (String panel : this.allSidePanelNames) {
+            if (cf.isPresent(By.xpath(hpl.sidePanel(panel)))) {
+                cf.assertion(cf.getText(By.xpath(hpl.sidePanel(panel))), panel);
+            } else
+                System.out.println("Side Panel" + panel + " is not present");
+
+            ;
         }
     }
 
@@ -26,7 +31,7 @@ public class homePage {
     }
 
     public void clickTopUp() {
-        cf.click(By.xpath(hpl.headersNames("Top Up")));
+        cf.click(By.xpath(hpl.sidePanel("Top Up")));
     }
 
     public void verifyTopUpPageUrl() {

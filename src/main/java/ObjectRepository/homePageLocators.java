@@ -2,7 +2,7 @@ package ObjectRepository;
 
 public class homePageLocators {
    public  String homePageTitle="";
-    public String headersNames(String headerName){
+    public String sidePanel(String headerName){
         return " "+headerName+" ";
     }
     public String liveCurrency(){

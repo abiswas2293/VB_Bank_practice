@@ -47,7 +47,7 @@ public class loginPage {
     }
 
     public void verifyUsernameTextboxIsEnabled() {
-        if (cf.isPresent(By.xpath(lpl.usernameTextBox))) {
+        if (cf.isEnabled(By.xpath(lpl.usernameTextBox))) {
             System.out.println("Username Textbox is enabled");
         } else {
             System.out.println("Username TextBox is disabled");
@@ -55,7 +55,7 @@ public class loginPage {
     }
 
     public void verifyPasswordTextboxIsEnabled() {
-        if (cf.isPresent(By.xpath(lpl.passwordTextBox))) {
+        if (cf.isEnabled(By.xpath(lpl.passwordTextBox))) {
             System.out.println("Password Textbox is enabled");
         } else {
             System.out.println("Password TextBox is disabled");
