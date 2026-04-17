@@ -12,6 +12,7 @@ public class registerPage {
     String expectedUsernameText = "";
     String expectedEmailText = "";
     String expectedPasswordText="";
+    String expectedHomepageUrl="https://vb-bank-demo.vercel.app/dashboard";
 
 
 
@@ -72,6 +73,10 @@ public class registerPage {
     }
     public void clickCreateAccount(){
         cf.click(By.xpath(rpl.createAccountButton));
+    }
+    public void verifyUserIsOnHomePage(){
+        cf.assertion(cf.getUrl(),expectedHomepageUrl);
+
     }
 
 
