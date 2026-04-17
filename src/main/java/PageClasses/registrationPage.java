@@ -4,7 +4,7 @@ import ObjectRepository.registrationPageLocators;
 import org.openqa.selenium.By;
 import utility.CommonFunctions;
 
-public class registerPage {
+public class registrationPage {
     CommonFunctions cf = new CommonFunctions();
     registrationPageLocators rpl = new registrationPageLocators();
     String expectedRegistrationPageTitle = "";
