@@ -5,6 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.util.Strings;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommonFunctions extends Baseclass{
 
@@ -43,5 +47,13 @@ public class CommonFunctions extends Baseclass{
         return driver.findElement(by).isEnabled();
     }
 
+    public List<String> ListOfStrings(By by){
+        List<WebElement> elements=driver.findElements(by);
+        List<String> ls=new ArrayList<>();
+        for(WebElement e:elements){
+            ls.add(e.getText());
+        }
+       return ls;
 
+    }
 }

@@ -19,4 +19,8 @@ public class homePage {
         cf.assertion(cf.getText(By.xpath(hpl.accountNumber)),expectedAccountNumber );
     }
 
+    public void verifyAllLiveCurrency(){
+        cf.ListOfStrings(By.xpath(hpl.liveCurrency()));
+    }
+
 }
