@@ -25,7 +25,7 @@ public class registrationPage {
     }
 
     public void verifyFullNameTextBoxIsPresentAndFillOut(String fullName) {
-        if (cf.isPresent(By.xpath(rpl.fullNameTextBox))) {
+        if (cf.isEnabled(By.xpath(rpl.fullNameTextBox))) {
             cf.typeText(By.xpath(rpl.fullNameTextBox), fullName);
         }
     }
@@ -35,7 +35,7 @@ public class registrationPage {
     }
 
     public void verifyUsernameTextBoxIsPresentAndFillOut(String username) {
-        if (cf.isPresent(By.xpath(rpl.usernameTextBox))) {
+        if (cf.isEnabled(By.xpath(rpl.usernameTextBox))) {
             cf.typeText(By.xpath(rpl.usernameTextBox), username);
         }
     }
@@ -45,7 +45,7 @@ public class registrationPage {
     }
 
     public void enterEmailAddress(String emailAddress) {
-        if (cf.isPresent(By.xpath(rpl.emailTextBox))) {
+        if (cf.isEnabled(By.xpath(rpl.emailTextBox))) {
             cf.typeText(By.xpath(rpl.emailTextBox), emailAddress);
         }
     }
@@ -57,7 +57,7 @@ public class registrationPage {
 
     public void enterPassword(String password) {
         this.password= password;
-        if (cf.isPresent(By.xpath(rpl.passwordTextBox))) {
+        if (cf.isEnabled(By.xpath(rpl.passwordTextBox))) {
             cf.typeText(By.xpath(rpl.passwordTextBox), password);
         }
     }
