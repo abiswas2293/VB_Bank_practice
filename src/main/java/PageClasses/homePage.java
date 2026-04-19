@@ -10,6 +10,7 @@ public class homePage {
     String[] allSidePanelNames = {"Bill payments", "Cards", "Loans", "Top Up", "Settings", "Log out"};
     String expectedAccountNumber = "";
     String expectedTopUpPageUrl = "https://vb-bank-demo.vercel.app/top-up";
+    String expectedBillPaymentUrl="https://vb-bank-demo.vercel.app/bill-pay";
 
     public void verifyAllSidePanelsArePresent() {
         for (String panel : this.allSidePanelNames) {
@@ -37,5 +38,13 @@ public class homePage {
     public void verifyTopUpPageUrl() {
         cf.assertion(cf.getUrl(), expectedTopUpPageUrl);
     }
+
+    public void clickBillPayment(){
+        cf.click(By.xpath(hpl.sidePanel("Bills Payment")));
+    }
+    public void verifyBillPaymentPageUrl() {
+        cf.assertion(cf.getUrl(), expectedBillPaymentUrl);
+    }
+
 
 }
