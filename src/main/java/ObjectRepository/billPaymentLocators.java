@@ -7,5 +7,6 @@ public class billPaymentLocators {
     public String descriptionBox="";
     public String selectPaymentMethodWithPayFromAccount="";
     public String selectPayBillButton="";
+    public String SuccessfulPaymentMessage="";
 
 }
