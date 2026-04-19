@@ -3,6 +3,7 @@ package TestClasses;
 import PageClasses.registrationPage;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import utility.Baseclass;
 
 public class registrationPageTest {
@@ -20,6 +21,7 @@ public class registrationPageTest {
         bc.closeBrowser();
     }
 
+    @Test
     public void verifyAfterFillingOutRegistrationPageUserIsSuccessfullyRegisteredAndRedirectToHomePage(){
         lpt.verifyAllElementsOnLoginPageIsPresentAndEnabledAndUserInitiateToRegister();
         rp.verifyRegisterPageTitle();
@@ -30,6 +32,10 @@ public class registrationPageTest {
         rp.verifyEmailText();
         rp.enterEmailAddress("eyre@yopmail.com");
         rp.verifyPasswordText();
+        rp.enterPassword("123456");
+        rp.fillSameConfirmedPass();
+        rp.clickCreateAccount();
+        rp.verifyUserIsOnHomePage();
     }
 
 
