@@ -21,7 +21,7 @@ public class loginPageTest {
     }
 
     @Test
-    public void verifyAllElementsOnLoginPage(){
+    public void verifyAllElementsOnLoginPageIsPresentAndEnabledAndUserInitiateToRegister(){
         lp.verifyLoginPageTitle();
         lp.verifyUserNameText();
         lp.verifyUserNameText();
