@@ -1,9 +1,7 @@
 package TestClasses;
 
 import PageClasses.homePage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utility.Baseclass;
 
 public class homePageTest {
@@ -11,12 +9,13 @@ public class homePageTest {
     registrationPageTest rpt=new registrationPageTest();
     homePage hp=new homePage();
 
-    @BeforeTest
-    public void before() {
-        bc.openBrowser();
+    @BeforeClass
+    @Parameters({"browser"})
+    public void before(String browser) {
+        bc.openBrowser(browser);
     }
 
-    @AfterTest
+    @AfterClass
     public void after() {
         bc.closeBrowser();
     }
