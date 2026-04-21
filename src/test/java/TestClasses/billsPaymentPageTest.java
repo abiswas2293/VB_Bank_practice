@@ -1,21 +1,20 @@
 package TestClasses;
 
 import PageClasses.billsPaymentPage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utility.Baseclass;
 
 public class billsPaymentPageTest {
     Baseclass bc=new Baseclass();
     homePageTest hpt=new homePageTest();
     billsPaymentPage bpp=new billsPaymentPage();
-    @BeforeTest
-    public void before() {
-        bc.openBrowser();
+    @BeforeClass
+    @Parameters({"browser"})
+    public void before(String browser) {
+        bc.openBrowser(browser);
     }
 
-    @AfterTest
+    @AfterClass
     public void after() {
         bc.closeBrowser();
     }
