@@ -1,21 +1,20 @@
 package TestClasses;
 
 import PageClasses.loginPage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utility.Baseclass;
 
 public class loginPageTest {
     Baseclass bc = new Baseclass();
     loginPage lp = new loginPage();
 
-    @BeforeTest
-    public void before() {
-        bc.openBrowser();
+    @BeforeClass
+    @Parameters({"browser"})
+    public void before(String browser) {
+        bc.openBrowser(browser);
     }
 
-    @AfterTest
+    @AfterClass
     public void after() {
         bc.closeBrowser();
     }
