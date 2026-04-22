@@ -3,17 +3,23 @@
 <suite name="Selenium parallel testing for VB Bank Practice Project"
        verbose="2"
        parallel="classes"
-       thread-count="5">
+       thread-count="2">
 
-    <test name="Regression Tests">
+
+
+    <listeners>
+        <listener class-name="listeners.ExtentTestNGListener"/>
+    </listeners>
+
+
+    <test name="LoginPage Tests">
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="TestClasses.loginPageTest"/>
-            <class name="TestClasses.registrationPageTest"/>
-            <class name="TestClasses.homePageTest"/>
-            <class name="TestClasses.topUpPageTest"/>
-            <class name="TestClasses.billsPaymentPageTest"/>
         </classes>
 
     </test>
+
+
 
 </suite>

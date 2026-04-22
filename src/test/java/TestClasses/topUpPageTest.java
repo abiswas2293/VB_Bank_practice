@@ -1,9 +1,7 @@
 package TestClasses;
 
 import PageClasses.topUpPage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utility.Baseclass;
 
 public class topUpPageTest {
@@ -11,30 +9,32 @@ public class topUpPageTest {
     homePageTest hpt=new homePageTest();
     topUpPage tup=new topUpPage();
 
-    @BeforeTest
-    public void before() {
-        bc.openBrowser();
+    @BeforeClass
+    @Parameters({"browser"})
+    public void before(String browser) {
+        bc.openBrowser(browser);
     }
 
-    @AfterTest
+    @AfterClass
     public void after() {
         bc.closeBrowser();
     }
 
     @Test
-    public void verifyUserProceedToPayAndPaymentIsSuccessful(){
+    @Parameters({"AddAmount","AddAmountOnPopUpPage","UserCardNumber","UserCardHolderName","UserCardCvv","UserCardExpiryDate","AmountNumberInSuccessfulMessage"})
+    public void verifyUserProceedToPayAndPaymentIsSuccessful(String AddAmount,String AddAmountOnPopUpPage,String UserCardNumber,String UserCardHolderName,String UserCardCvv,String UserCardExpiryDate,String AmountNumberInSuccessfulMessage ){
         hpt.verifyAfterClickingOnTopUpUserIsOnTopUpPage();
         tup.verifyTopUpPageTitle();
-        tup.enterAmount();
+        tup.enterAmount(AddAmount);
         tup.clickProceedToPayment();
         tup.verifyPopOnSecurePaymentGatewayPage();
-        tup.verifyAmountToPayOnPopUpPage();
-        tup.enterCardNumberOnPopUpPage();
-        tup.enterCardHolderNameOnPopUpPage();
-        tup.enterCvvOnPopUpPage();
-        tup.enterExpiryDateOnPopUpPage();
+        tup.verifyAmountToPayOnPopUpPage(AddAmountOnPopUpPage);
+        tup.enterCardNumberOnPopUpPage(UserCardNumber);
+        tup.enterCardHolderNameOnPopUpPage(UserCardHolderName);
+        tup.enterCvvOnPopUpPage(UserCardCvv);
+        tup.enterExpiryDateOnPopUpPage(UserCardExpiryDate);
         tup.ClickPayButtonOnPopUpPage();
-        tup.verifyUserGotSuccessfulMessageOnTopUpPage();
+        tup.verifyUserGotSuccessfulMessageOnTopUpPage(AmountNumberInSuccessfulMessage);
     }
 
 }

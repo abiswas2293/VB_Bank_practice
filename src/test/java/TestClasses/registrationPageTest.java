@@ -1,9 +1,7 @@
 package TestClasses;
 
 import PageClasses.registrationPage;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utility.Baseclass;
 
 public class registrationPageTest {
@@ -11,28 +9,30 @@ public class registrationPageTest {
     registrationPage rp = new registrationPage();
     loginPageTest lpt = new loginPageTest();
 
-    @BeforeTest
-    public void before() {
-        bc.openBrowser();
+    @BeforeClass
+    @Parameters({"browser"})
+    public void before(String browser) {
+        bc.openBrowser(browser);
     }
 
-    @AfterTest
+    @AfterClass
     public void after() {
         bc.closeBrowser();
     }
 
     @Test
-    public void verifyAfterFillingOutRegistrationPageUserIsSuccessfullyRegisteredAndRedirectToHomePage(){
+    @Parameters({"UserFullName","UserName","UserEmailAddress","UserPassword"})
+    public void verifyAfterFillingOutRegistrationPageUserIsSuccessfullyRegisteredAndRedirectToHomePage(String UserFullName,String UserName,String UserEmailAddress,String UserPassword){
         lpt.verifyAllElementsOnLoginPageIsPresentAndEnabledAndUserInitiateToRegister();
         rp.verifyRegisterPageTitle();
         rp.verifyFullNameText();
-        rp.verifyFullNameTextBoxIsPresentAndFillOut("ABC");
+        rp.verifyFullNameTextBoxIsPresentAndFillOut(UserFullName);
         rp.verifyUsernameText();
-        rp.verifyUsernameTextBoxIsPresentAndFillOut("AB");
+        rp.verifyUsernameTextBoxIsPresentAndFillOut(UserName);
         rp.verifyEmailText();
-        rp.enterEmailAddress("eyre@yopmail.com");
+        rp.enterEmailAddress(UserEmailAddress);
         rp.verifyPasswordText();
-        rp.enterPassword("123456");
+        rp.enterPassword(UserPassword);
         rp.fillSameConfirmedPass();
         rp.clickCreateAccount();
         rp.verifyUserIsOnHomePage();

@@ -20,12 +20,13 @@ public class billsPaymentPageTest {
     }
 
     @Test
-    public void userProceedToPayBillForVBPowerAndGetSuccessfulPaymentMessage(){
+    @Parameters({"ProviderName","PaymentAmount","BillDescription"})
+    public void userProceedToPayBillForVBPowerAndGetSuccessfulPaymentMessage(String ProviderName,String PaymentAmount,String BillDescription){
         hpt.verifyAfterClickingOnBillPaymentUserIsOnBillPaymentPage();
         bpp.verifyBillPaymentPageTitle();
-        bpp.selectProvider("VB Power");
-        bpp.addAmountInAmountBox("10");
-        bpp.addDescription("Electric Bill");
+        bpp.selectProvider(ProviderName);
+        bpp.addAmountInAmountBox(PaymentAmount);
+        bpp.addDescription(BillDescription);
         bpp.selectPayFromAccount();
         bpp.clickPayBillButton();
         bpp.verifySuccessFulPaymentMessage();
