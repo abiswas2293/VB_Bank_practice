@@ -17,12 +17,13 @@ import java.net.URL;
 public class Baseclass {
     public static WebDriver driver;
 
-    public void openBrowser(@Optional("chrome") String browser,
-                            @Optional("local") String execution) throws MalformedURLException {
-        String executionType = execution.toLowerCase().trim();
-        switch (executionType) {
+    public void openBrowser(String browser) {
+        try {
+            String executionType = System.getProperty("env");
 
-            case "grid":
+            if (executionType == null)
+                executionType = "";
+            if (executionType.equalsIgnoreCase("grid")) {
                 // ================== SELENIUM GRID MODE ==================
                 String gridUrl = "http://localhost:4444";
 
@@ -32,10 +33,6 @@ public class Baseclass {
                         driver = new RemoteWebDriver(new URL(gridUrl), firefoxOptions);
                         break;
 
-                    case "edge":
-                        EdgeOptions edgeOptions = new EdgeOptions();
-                        driver = new RemoteWebDriver(new URL(gridUrl), edgeOptions);
-                        break;
 
                     case "chrome":
                     default:
@@ -44,33 +41,38 @@ public class Baseclass {
                         break;
                 }
                 System.out.println("✅ Running on SELENIUM GRID");
-                break;
-            case "local":
-            default:
+            } else {
                 // ================== LOCAL MODE ==================
+
                 switch (browser.toLowerCase()) {
                     case "firefox":
                         driver = new FirefoxDriver();
+                        WebDriverManager.firefoxdriver().setup();
                         break;
 
                     case "edge":
                         driver = new EdgeDriver();
+                        WebDriverManager.edgedriver().setup();
                         break;
 
                     case "chrome":
                     default:
                         driver = new ChromeDriver();
+                        WebDriverManager.chromedriver().setup();
                         break;
                 }
                 System.out.println("✅ Running LOCALLY");
-                break;
-        }
+            }
 
-        driver.manage().window().maximize();
-        driver.get("https://vb-bank-demo.vercel.app/login");
+            driver.manage().window().maximize();
+            driver.get("https://vb-bank-demo.vercel.app/login");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void closeBrowser(){
+
+    public void closeBrowser() {
         driver.quit();
     }
 }
